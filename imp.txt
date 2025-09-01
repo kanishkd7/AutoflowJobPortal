@@ -1,0 +1,126 @@
+1. Register (User)
+POST /api/auth/register
+{
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "password123"
+}
+
+2.  Login (User)
+POST /api/auth/login
+{
+  "email": "testuser@example.com",
+  "password": "password123"
+}
+
+
+3. Logout (User)
+POST /api/auth/logout
+
+
+4. Get My Profile
+GET /api/users/me
+
+
+5. Update My Profile
+PUT /api/users/me
+
+{
+  "headline": "Full Stack Developer",
+  "location": "Mumbai",
+  "phone": "1234567890",
+  "country": "India",
+  "sociallinks": { "linkedin": "https://linkedin.com/in/...", "github": "https://github.com/..." }
+}
+
+
+6. Upload Resume
+POST /api/users/resume
+Form-Data:
+Key: resume (type: File, PDF only)
+
+
+7. Upload Profile Photo
+POST /api/users/photo
+Form-Data:
+Key: photo (type: File, image only)
+
+------------------COMPANY ROUTES-------------------------
+
+8. Register (Company)
+POST /api/company/auth/register
+{
+  "name": "Acme Corp",
+  "email": "hr@acme.com",
+  "password": "securepass",
+  "description": "A great company",
+  "website": "https://acme.com",
+  "location": "New York"
+}
+
+
+9. Login (Company)
+POST /api/company/auth/login
+
+{
+  "email": "hr@acme.com",
+  "password": "securepass"
+}
+
+10. Logout (Company)
+POST /api/company/auth/logout
+
+
+11. Get My Company Profile
+GET /api/companies/me
+
+
+12. Update Company Profile
+PUT /api/companies/me
+
+{
+  "name": "Acme Corp",
+  "description": "A great company",
+  "website": "https://acme.com",
+  "location": "New York"
+}
+
+
+13. Upload Company Logo
+POST /api/companies/logo
+Form-Data:
+Key: logo (type: File, image only)
+
+
+14. Create Job (Company)
+POST /api/companies/jobs
+
+{
+  "title": "Backend Developer",
+  "description": "Work on Node.js APIs",
+  "location": "Remote",
+  "salary": "10-15 LPA",
+  "type": "Full-time",
+  "requirements": "2+ years Node.js",
+  "deadline": "2025-12-31"
+}
+
+
+15. List My Jobs (Company)
+GET /api/companies/jobs
+
+
+16. List All Jobs
+GET /api/jobs
+
+17. Get Job Details
+GET /api/jobs/:id
+
+
+
+RECOMMENDED TESTING FLOW
+Register a user → Login as user → Test user profile, update, resume/photo upload
+Logout user
+Register a company → Login as company → Test company profile, update, logo upload, create job, list jobs
+Logout company
+As any user (or unauthenticated), list all jobs and get job details
